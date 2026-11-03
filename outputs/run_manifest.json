@@ -1,0 +1,31 @@
+{
+  "started": "2026-11-03T08:29:28.668Z",
+  "completed": "2026-11-03T08:29:38.249Z",
+  "node": "v24.18.0",
+  "platform": "win32",
+  "dependencies": "Node built-ins only; no packages",
+  "command": "D:\\varma\\Case Study\\run_pipeline.mjs --seed 42 --bootstrap 200",
+  "files": [
+    "artifact_verification.json",
+    "bootstrap_draws.json",
+    "calendar_differences.csv",
+    "config.json",
+    "llm_live_review.json",
+    "llm_review.json",
+    "llm_review_attempt.json",
+    "model_results.json",
+    "refresh_validation.json",
+    "report.html",
+    "reproducibility.json",
+    "robustness.json",
+    "run_manifest.json",
+    "scenarios.csv",
+    "SUBMISSION.md",
+    "test_results.tap",
+    "truth.json",
+    "validation.json",
+    "visual_review.json"
+  ],
+  "seed": 42,
+  "sourceSha256": "4b4645aa0f99910813c5155c85f07416c25456d2f88aa502ac992ee854816786"
+}

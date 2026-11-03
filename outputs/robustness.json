@@ -1,0 +1,108 @@
+{
+  "seeds": [
+    17,
+    83,
+    101
+  ],
+  "chosenBeforeRunning": true,
+  "mode": "Separate fixed-seed point-estimate robustness; no bootstraps and no model selection across seeds. Main seed remains 42.",
+  "results": [
+    {
+      "seed": 17,
+      "naive": {
+        "shares": [
+          16.506059128800054,
+          8.847836364618198,
+          7.024452494994714
+        ],
+        "truthShares": [
+          19.66423100640607,
+          13.704217370446015,
+          5.729431004836848
+        ],
+        "meanAbsoluteShareError": 3.103191457863899,
+        "equalSplitLift": 40.429689478026376
+      },
+      "corrected": {
+        "shares": [
+          23.887321754878236,
+          8.539433633369692,
+          5.922216874413952
+        ],
+        "truthShares": [
+          19.66423100640607,
+          13.704217370446015,
+          5.729431004836848
+        ],
+        "meanAbsoluteShareError": 3.1935534517085316,
+        "equalSplitLift": 37.69447678199185
+      },
+      "trueLift": 26.812061696104138
+    },
+    {
+      "seed": 83,
+      "naive": {
+        "shares": [
+          22.91713574778068,
+          11.113044529624364,
+          8.779952857538706
+        ],
+        "truthShares": [
+          19.254004930685955,
+          13.179842857169573,
+          6.385200746312719
+        ],
+        "meanAbsoluteShareError": 2.7082270852886405,
+        "equalSplitLift": 46.107536388315566
+      },
+      "corrected": {
+        "shares": [
+          24.139987502731614,
+          11.460111925314004,
+          9.678043851252687
+        ],
+        "truthShares": [
+          19.254004930685955,
+          13.179842857169573,
+          6.385200746312719
+        ],
+        "meanAbsoluteShareError": 3.2995188696137316,
+        "equalSplitLift": 49.947269435783255
+      },
+      "trueLift": 40.914146127234744
+    },
+    {
+      "seed": 101,
+      "naive": {
+        "shares": [
+          100.5904089074242,
+          19.595169318702396,
+          9.986010814367958
+        ],
+        "truthShares": [
+          19.478049267145234,
+          13.664948114014553,
+          6.351624940535701
+        ],
+        "meanAbsoluteShareError": 30.22565557293302,
+        "equalSplitLift": 24.016416708028828
+      },
+      "corrected": {
+        "shares": [
+          16.03157416841528,
+          25.755424185664033,
+          7.263129804417448
+        ],
+        "truthShares": [
+          19.478049267145234,
+          13.664948114014553,
+          6.351624940535701
+        ],
+        "meanAbsoluteShareError": 5.482818678087061,
+        "equalSplitLift": 26.69587876865171
+      },
+      "trueLift": 9.226616371777254
+    }
+  ],
+  "limitation": "Three seeds are illustrative, not a general statistical performance study."
+}

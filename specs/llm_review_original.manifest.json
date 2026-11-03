@@ -1,0 +1,6 @@
+{
+  "specSha256": "99128de5f2d87cee414f68c00d22d9fb66af50cecb112b41ffbc072641dcd342",
+  "reviewFile": "specs/llm_review_original.json",
+  "route": "Genuine Codex model-context review bound to the original specification bytes.",
+  "note": "This pinned hash cannot approve a changed specification. A changed specification requires a new genuine review."
+}

@@ -1,0 +1,10 @@
+Exhibit 1: Data source notes (vendor file specification)
+TV media spend: Weekly, vendor media-buying week (Monday to Sunday).
+Digital / email spend: Monthly, calendar month.
+Sales: Monthly, calendar month.
+
+Case key term: Broadcast / media calendar: Weeks always run Monday to Sunday,
+grouped into 4-4-5 week quarters; does not line up with calendar months.
+
+The exhibit does not specify currency, scale, timezone, fiscal-year anchor,
+week-label semantics, or actual within-week delivery. These remain unspecified.

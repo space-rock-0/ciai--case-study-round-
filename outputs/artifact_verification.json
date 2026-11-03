@@ -1,0 +1,94 @@
+{
+  "at": "2026-11-03T08:08:08.750Z",
+  "passed": true,
+  "checks": [
+    {
+      "name": "every relative evidence link exists",
+      "passed": true
+    },
+    {
+      "name": "every section anchor resolves",
+      "passed": true
+    },
+    {
+      "name": "offline report has no external assets or JavaScript",
+      "passed": true
+    },
+    {
+      "name": "report has no undefined, NaN, or encoding corruption",
+      "passed": true
+    },
+    {
+      "name": "report has accessible SVG descriptions",
+      "passed": true
+    },
+    {
+      "name": "all contribution point estimates match saved results",
+      "passed": true
+    },
+    {
+      "name": "all scenario interval endpoints match saved results",
+      "passed": true
+    },
+    {
+      "name": "full nonlinear search refitted for every bootstrap",
+      "passed": true
+    },
+    {
+      "name": "raw bootstrap draws and parameter selections retained",
+      "passed": true
+    },
+    {
+      "name": "all prespecified robustness seeds present",
+      "passed": true
+    },
+    {
+      "name": "genuine review provenance retained; quote checks passed",
+      "passed": true
+    },
+    {
+      "name": "current review re-verifies independently",
+      "passed": true
+    }
+  ],
+  "visualRendering": {
+    "at": "2026-11-03T13:37:54.2382996+05:30",
+    "browser": "Google Chrome",
+    "route": "Native Chrome window through cua_repl",
+    "artifact": "outputs/report.html",
+    "artifactSha256": "B45B0046BF1AD881F91BCAD67AFE4AEAA4F582AE7D3BE2CAA2BFA03D0968249B",
+    "window": "1233 x 678 pixels",
+    "inspected": [
+      "Updated source-check panel",
+      "Genuine OpenAI API model/response/timestamp provenance panel",
+      "Live and subsequent offline replay descriptions",
+      "LLM flag-to-validator table and grouped unresolved vendor clarification"
+    ],
+    "outcome": "No obvious clipping or layout defects in inspected final desktop sections",
+    "priorInspection": {
+      "at": "2026-11-03T13:07:28.0308132+05:30",
+      "browser": "Google Chrome",
+      "route": "Native Chrome window through cua_repl computer use; browser integration host remains unavailable",
+      "artifact": "outputs/report.html",
+      "artifactSha256": "40CB99ED0B3633FE3E075793EA948586852E4859BD2A2593C83E4C111629FD1D",
+      "window": "1233 x 678 pixels",
+      "inspected": [
+        "Opening header and executive introduction",
+        "Channel contribution SVG, whiskers, ground-truth markers and table",
+        "Scenario table, primary-row highlighting and caveat"
+      ],
+      "outcome": "No obvious clipping or layout defects in inspected desktop sections",
+      "limitations": [
+        "Not a full-page visual audit",
+        "Mobile and print layouts not inspected",
+        "No local screenshot files saved; tool screenshots are retained in the conversation"
+      ],
+      "additionalPermissionsNeeded": "None for the native route after the report was active in Chrome"
+    },
+    "limitations": [
+      "Full-page, mobile and print layouts not exhaustively inspected",
+      "Prior opening/chart/scenario inspection relates to the earlier report version; those numerical/layout sections were unchanged",
+      "Tool screenshots retained in conversation; no local screenshots saved"
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import crypto from 'node:crypto';
+import {sha256, SPEC_PATH, bindReview} from '../src/llm.mjs';
+import {save} from '../src/core.mjs';
+let html=fs.readFileSync('outputs/report.html','utf8'),o=JSON.parse(fs.readFileSync('outputs/model_results.json','utf8')),checks=[];
+const check=(name,ok)=>{checks.push({name,passed:!!ok});};
+let links=[...html.matchAll(/href="([^"]+)"/g)].map(m=>m[1]);
+check('every relative evidence link exists',links.filter(x=>!x.startsWith('#')).every(x=>fs.existsSync(path.resolve('outputs',x))));
+check('every section anchor resolves',links.filter(x=>x.startsWith('#')).every(x=>html.includes(`id="${x.slice(1)}"`)));
+check('offline report has no external assets or JavaScript',!/<script|(?:src|href)="https?:\/\/|@import|url\(https?:/i.test(html));
+check('report has no undefined, NaN, or encoding corruption',!/(?:undefined|NaN|â€|Ã—|ï»¿)/.test(html));
+check('report has accessible SVG descriptions',html.includes('aria-labelledby="shareTitle shareDesc"')&&html.includes('<title id="shareTitle">'));
+let fixed=(n,d=1)=>Number(n).toLocaleString('en-US',{minimumFractionDigits:d,maximumFractionDigits:d});
+check('all contribution point estimates match saved results',Object.values(o.results).every(r=>r.contributions.every(c=>html.includes(fixed(c.estimate)))));
+check('all scenario interval endpoints match saved results',Object.values(o.results).every(r=>r.scenarios.every(s=>s.ci.every(x=>html.includes(fixed(x))))));
+check('full nonlinear search refitted for every bootstrap',Object.values(o.results).every(r=>r.bootstrap.nonlinearTransformsRefit&&r.bootstrap.valid===o.config.bootstrapReplicates&&r.bootstrap.failed===0));
+let draws=JSON.parse(fs.readFileSync('outputs/bootstrap_draws.json','utf8'));check('raw bootstrap draws and parameter selections retained',Object.values(draws).every(b=>b.shares.length===o.config.bootstrapReplicates&&b.selectedParameters.length===o.config.bootstrapReplicates));
+let robust=JSON.parse(fs.readFileSync('outputs/robustness.json','utf8'));check('all prespecified robustness seeds present',JSON.stringify(robust.results.map(r=>r.seed))==='[17,83,101]');
+let review=JSON.parse(fs.readFileSync('outputs/llm_review.json','utf8'));check('genuine review provenance retained; quote checks passed',['live','replay'].includes(review.mode)&&review.quotesVerified&&review.specificationMatched&&review.rawResponse&&review.originalTimestamp&&review.specSha256===sha256(fs.readFileSync(SPEC_PATH,'utf8')));
+try {bindReview(review,fs.readFileSync(SPEC_PATH,'utf8'),JSON.parse(fs.readFileSync('outputs/validation.json','utf8')));check('current review re-verifies independently',true);} catch {check('current review re-verifies independently',false);}
+let visual=fs.existsSync('outputs/visual_review.json')?JSON.parse(fs.readFileSync('outputs/visual_review.json','utf8').replace(/^\uFEFF/,'')):null;
+let reviewedCurrentHtml=visual?.artifactSha256?.toLowerCase()===crypto.createHash('sha256').update(html).digest('hex');
+save('outputs/artifact_verification.json',{at:new Date().toISOString(),passed:checks.every(c=>c.passed),checks,visualRendering:reviewedCurrentHtml?visual:'Current HTML has no matching saved visual review. Prior browser attempts may have been blocked.'});console.log(JSON.stringify(checks,null,2));if(checks.some(c=>!c.passed))process.exitCode=1;

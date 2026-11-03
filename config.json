@@ -1,0 +1,1 @@
+{"seed":42,"analysisStart":"2021-01-01","analysisMonths":60,"warmupMonths":12,"bootstrapReplicates":200,"blockMonths":3,"holdoutMonths":12,"transformCandidates":180,"spendUnit":"simulated currency thousands","salesUnit":"simulated revenue units"}

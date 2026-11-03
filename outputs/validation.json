@@ -1,0 +1,49 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "name": "weekly required fields and finite nonnegative spend",
+      "passed": true
+    },
+    {
+      "name": "unique TV week starts",
+      "passed": true
+    },
+    {
+      "name": "parseable canonical dates; Monday–Sunday seven-day periods",
+      "passed": true
+    },
+    {
+      "name": "weekly continuity without gaps or overlaps",
+      "passed": true
+    },
+    {
+      "name": "monthly grain and unique periods",
+      "passed": true
+    },
+    {
+      "name": "finite sales and nonnegative finite digital/email",
+      "passed": true
+    },
+    {
+      "name": "complete ordered warm-up and analysis months",
+      "passed": true
+    },
+    {
+      "name": "weekly coverage spans complete monthly window",
+      "passed": true
+    },
+    {
+      "name": "declared units match project contract",
+      "passed": true
+    },
+    {
+      "name": "full expanded calendar spend conservation",
+      "passed": true
+    },
+    {
+      "name": "one-to-one month join coverage",
+      "passed": true
+    }
+  ]
+}

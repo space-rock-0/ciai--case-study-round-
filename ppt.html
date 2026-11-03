@@ -1,0 +1,165 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The Two Calendars — FDE briefing</title><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet"><style>
+/* === THEME === */
+:root{--stage-bg:#e7e1d4;--slide-bg:#f8f5ed;--ink:#252824;--muted:#62685f;--line:#9eaa9d;--green:#385b49;--red:#a2493c;font-family:'DM Sans',sans-serif}
+*{box-sizing:border-box}body{color:var(--ink)}
+/* === FIXED STAGE BASE === */
+/* ===========================================
+   FIXED 16:9 STAGE: MANDATORY BASE STYLES
+   Include this ENTIRE file in every presentation.
+   Slides are authored at 1920×1080 and scaled as a whole.
+   =========================================== */
+
+/* 1. Lock the browser viewport */
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+    background: var(--stage-bg, #000);
+}
+
+/* 2. Full-window deck viewport */
+.deck-viewport {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    background: var(--stage-bg, #000);
+}
+
+/* 3. Fixed 16:9 design canvas.
+   JavaScript sets transform: translate(...) scale(...). */
+.deck-stage {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1920px;
+    height: 1080px;
+    overflow: hidden;
+    transform-origin: 0 0;
+    background: var(--slide-bg, #fff);
+}
+
+/* 4. Slides stack inside the fixed stage.
+   Content must be laid out at 1920×1080, not reflowed per device. */
+.slide {
+    position: absolute;
+    inset: 0;
+    width: 1920px;
+    height: 1080px;
+    overflow: hidden;
+    display: block;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    background: var(--slide-bg, #fff);
+}
+
+.slide.active,
+.slide.visible {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 1;
+}
+
+/* 5. Keep media inside authored slide bounds */
+img,
+video,
+canvas,
+svg {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/* 6. Presentation chrome stays outside the slide design system */
+.deck-controls {
+    position: fixed;
+    left: 50%;
+    bottom: 22px;
+    transform: translateX(-50%);
+    z-index: 1000;
+}
+
+/* 7. Print one fixed-size slide per page */
+@media print {
+    html,
+    body {
+        width: 1920px;
+        height: auto;
+        overflow: visible;
+        background: #fff;
+    }
+
+    .deck-viewport {
+        position: static;
+        overflow: visible;
+        background: #fff;
+    }
+
+    .deck-stage {
+        position: static;
+        width: auto;
+        height: auto;
+        transform: none !important;
+        background: none;
+    }
+
+    .slide {
+        position: relative;
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        width: 1920px;
+        height: 1080px;
+        break-after: page;
+        page-break-after: always;
+    }
+
+    .slide:last-child {
+        break-after: auto;
+        page-break-after: auto;
+    }
+
+    .deck-controls {
+        display: none !important;
+    }
+}
+
+/* 8. Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.2s !important;
+    }
+}
+
+/* === EDITORIAL SLIDE SYSTEM === */
+.slide{padding:95px 120px;background:linear-gradient(90deg,transparent 0 94%,#ebe6da 94% 94.2%,transparent 94.2%),var(--slide-bg)}
+.slide:before{content:'';position:absolute;left:120px;right:120px;top:76px;height:2px;background:var(--ink)}
+.kicker{font-size:23px;letter-spacing:.19em;text-transform:uppercase;color:var(--green);font-weight:700;margin-top:24px}.num{position:absolute;right:125px;top:105px;font-size:24px;color:var(--muted)}
+h1,h2{font-family:'Libre Baskerville',serif;font-weight:400;line-height:1.12;letter-spacing:-.055em;margin:0}h1{font-size:120px;max-width:1430px;margin-top:125px}h2{font-size:83px;max-width:1550px;margin-top:70px}.sub{font-size:38px;line-height:1.35;max-width:1350px;margin-top:70px;color:var(--muted)}.footer{position:absolute;bottom:75px;left:120px;right:120px;border-top:1px solid var(--line);padding-top:20px;font-size:22px;color:var(--muted);display:flex;justify-content:space-between}.lead{font-size:46px;line-height:1.35;max-width:1450px;margin-top:105px}.two{display:flex;gap:65px;margin-top:95px}.box{flex:1;border-top:4px solid var(--green);padding-top:30px}.box strong{display:block;font-family:'Libre Baskerville',serif;font-size:55px;font-weight:400}.box p{font-size:30px;line-height:1.4;color:var(--muted)}.arrow{font-size:84px;color:var(--green);align-self:center}.metric{font-family:'Libre Baskerville',serif;font-size:190px;letter-spacing:-.09em;color:var(--green);margin-top:65px}.metric small{font:32px 'DM Sans',sans-serif;letter-spacing:0;color:var(--muted)}.aside{font-size:30px;max-width:1400px;line-height:1.45;color:var(--muted)}.rule{height:2px;background:var(--line);margin-top:70px}.steps{display:flex;gap:50px;margin-top:100px}.step{flex:1;border-top:4px solid var(--green);padding-top:28px;font-size:31px;line-height:1.35}.step b{font:65px 'Libre Baskerville',serif;color:var(--green);display:block;margin-bottom:18px}.callout{font-size:30px;color:var(--red);margin-top:48px}.reveal{opacity:0;transform:translateY(22px);transition:opacity .55s ease,transform .55s ease}.visible .reveal{opacity:1;transform:none}.visible .reveal:nth-child(2){transition-delay:.12s}.visible .reveal:nth-child(3){transition-delay:.22s}.visible .reveal:nth-child(4){transition-delay:.32s}
+/* === CONTROLS AND EDITING === */
+.deck-controls{background:#252824;color:#fff;border-radius:50px;padding:11px 20px;font:16px 'DM Sans',sans-serif}.edit-hotzone{position:fixed;top:0;left:0;width:80px;height:80px;z-index:10000}.edit-toggle{position:fixed;top:15px;left:15px;z-index:10001;opacity:0;pointer-events:none}.edit-toggle.show,.edit-toggle.active{opacity:1;pointer-events:auto}button{cursor:pointer}.editing [contenteditable=true]{outline:2px dashed var(--green)}
+</style></head><body><div class="deck-viewport"><main class="deck-stage" id="deckStage">
+<!-- === SLIDE 1: DECISION QUESTION === -->
+<section class="slide active visible"><div class="kicker reveal">The Two Calendars · FDE briefing</div><div class="num">01 / 05</div><h1 class="reveal">Does the TV budget shift still hold?</h1><p class="sub reveal">We found a timing mismatch in the data behind the recommendation. We tested its impact and built a check for every refresh.</p><div class="footer"><span>Diabetes brand · marketing mix model</span><span>Controlled synthetic study</span></div></section>
+<!-- === SLIDE 2: THE ISSUE === -->
+<section class="slide"><div class="kicker reveal">The issue</div><div class="num">02 / 05</div><h2 class="reveal">One week can cross two months.</h2><div class="two reveal"><div class="box"><strong>TV</strong><p>Reported Monday to Sunday</p></div><div class="arrow">→</div><div class="box"><strong>Sales + digital</strong><p>Reported by calendar month</p></div></div><p class="aside reveal">Putting the whole TV week in Monday’s month can shift spend away from the sales it may have influenced.</p><div class="footer"><span>Example: Mon 29 June – Sun 5 July</span><span>Five days belong to July</span></div></section>
+<!-- === SLIDE 3: WHAT WE BUILT === -->
+<section class="slide"><div class="kicker reveal">The solution</div><div class="num">03 / 05</div><h2 class="reveal">We compared like with like.</h2><div class="steps reveal"><div class="step"><b>1</b>Generated a known synthetic sales history</div><div class="step"><b>2</b>Split TV weeks across calendar days</div><div class="step"><b>3</b>Fit both versions and measured uncertainty</div></div><p class="aside reveal">The same sales and digital data go into both models. Only TV’s month assignment changes.</p><div class="footer"><span>Five analysis years + one warm-up year</span><span>Same model protocol</span></div></section>
+<!-- === SLIDE 4: RESULT === -->
+<section class="slide"><div class="kicker reveal">The synthetic result</div><div class="num">04 / 05</div><h2 class="reveal">The direction held. The estimate moved.</h2><div class="two reveal"><div class="box"><strong>+1.31%</strong><p>Predicted gain before calendar correction</p></div><div class="box"><strong>+1.11%</strong><p>Predicted gain after correction</p></div></div><p class="aside reveal">Corrected 95% model interval: +0.66% to +1.81% over three months, for a 15% TV reduction split equally into digital and email.</p><div class="footer"><span>Synthetic data only</span><span>Not a client forecast</span></div></section>
+<!-- === SLIDE 5: CLIENT ACTION === -->
+<section class="slide"><div class="kicker reveal">What we should do now</div><div class="num">05 / 05</div><h2 class="reveal">Check the real data before Q3.</h2><div class="steps reveal"><div class="step"><b>1</b>Tell the account lead and Brand Director now</div><div class="step"><b>2</b>Confirm vendor dates and daily TV delivery</div><div class="step"><b>3</b>Rerun the model and update the VP message</div></div><p class="callout reveal">We can describe the synthetic finding. We cannot validate this brand’s decision without its corrected data.</p><div class="footer"><span>Refresh gate checks grain, coverage, joins, units and spend totals</span><span>Decision pending real-data rerun</span></div></section>
+</main></div><nav class="deck-controls" aria-label="Slide navigation"><span id="count">1 / 5</span> · ← →</nav><div class="edit-hotzone" title="Edit mode"></div><button id="editToggle" class="edit-toggle" title="Edit mode (E)">Edit</button><script>
+/* === SLIDE CONTROLLER === */
+class SlidePresentation{constructor(){this.slides=[...document.querySelectorAll('.slide')];this.stage=document.getElementById('deckStage');this.currentSlide=0;this.scale();window.addEventListener('resize',()=>this.scale());document.addEventListener('keydown',e=>{if(e.target.isContentEditable)return;if(['ArrowRight','ArrowDown',' ','PageDown'].includes(e.key)){e.preventDefault();this.show(this.currentSlide+1)}if(['ArrowLeft','ArrowUp','PageUp'].includes(e.key)){e.preventDefault();this.show(this.currentSlide-1)}});let x=0;document.addEventListener('touchstart',e=>x=e.touches[0].clientX,{passive:true});document.addEventListener('touchend',e=>{let dx=e.changedTouches[0].clientX-x;if(Math.abs(dx)>60)this.show(this.currentSlide+(dx<0?1:-1))},{passive:true});let locked=false;document.addEventListener('wheel',e=>{if(locked)return;locked=true;this.show(this.currentSlide+(e.deltaY>0?1:-1));setTimeout(()=>locked=false,450)},{passive:true});this.show(0)}scale(){const f=Math.min(innerWidth/1920,innerHeight/1080);this.stage.style.transform=`translate(${(innerWidth-1920*f)/2}px,${(innerHeight-1080*f)/2}px) scale(${f})`}show(i){this.currentSlide=Math.max(0,Math.min(i,this.slides.length-1));this.slides.forEach((s,j)=>{s.classList.toggle('active',j===this.currentSlide);s.classList.toggle('visible',j===this.currentSlide)});document.getElementById('count').textContent=`${this.currentSlide+1} / ${this.slides.length}`}}
+new SlidePresentation();
+/* === INLINE EDITOR === */
+const editor={isActive:false,toggleEditMode(){this.isActive=!this.isActive;document.body.classList.toggle('editing',this.isActive);document.querySelectorAll('.slide h1,.slide h2,.slide p,.slide .step,.slide .kicker').forEach((el,i)=>{el.contentEditable=this.isActive;let v=localStorage.getItem('fde-slide-'+i);if(v&&this.isActive&&!el.dataset.restored){el.innerHTML=v;el.dataset.restored='1'}el.oninput=()=>localStorage.setItem('fde-slide-'+i,el.innerHTML)});editToggle.classList.toggle('active',this.isActive)}};const hotzone=document.querySelector('.edit-hotzone'),editToggle=document.getElementById('editToggle');let hideTimeout;hotzone.addEventListener('mouseenter',()=>{clearTimeout(hideTimeout);editToggle.classList.add('show')});hotzone.addEventListener('mouseleave',()=>hideTimeout=setTimeout(()=>{if(!editor.isActive)editToggle.classList.remove('show')},400));editToggle.addEventListener('mouseenter',()=>clearTimeout(hideTimeout));editToggle.addEventListener('mouseleave',()=>hideTimeout=setTimeout(()=>{if(!editor.isActive)editToggle.classList.remove('show')},400));hotzone.addEventListener('click',()=>editor.toggleEditMode());editToggle.addEventListener('click',()=>editor.toggleEditMode());document.addEventListener('keydown',e=>{if((e.key==='e'||e.key==='E')&&!e.target.isContentEditable)editor.toggleEditMode();if(e.ctrlKey&&e.key.toLowerCase()==='s'){e.preventDefault();alert('Edits saved in this browser. Use Print → Save as PDF to share.')}});
+</script></body></html>
+

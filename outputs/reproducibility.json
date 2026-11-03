@@ -1,0 +1,13 @@
+{
+  "started": "2026-11-03T08:06:10.394Z",
+  "completed": "2026-11-03T08:06:21.892Z",
+  "cleanDirectory": "C:\\Users\\MANU\\AppData\\Local\\Temp\\two-calendars-clean-09s8bq",
+  "command": "node run_pipeline.mjs --seed 42 --bootstrap 200",
+  "reviewEvidence": "Genuine OpenAI API response replayed offline",
+  "exitCode": 0,
+  "numericalReferenceSha256": "4bbf7cbce00737b96a98709d77b18ba6d46690d5ea437a1805b4245422e79cf8",
+  "numericalFreshSha256": "4bbf7cbce00737b96a98709d77b18ba6d46690d5ea437a1805b4245422e79cf8",
+  "numericallyIdentical": true,
+  "scope": "All estimates, intervals, diagnostics, candidate sensitivities, scenarios, config, paired changes, truth scenarios and calendar values. Timestamps excluded.",
+  "cleanup": "Isolated temporary directory retained for audit; no user files removed."
+}

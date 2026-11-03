@@ -1,0 +1,62 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "name": "weekly required fields and finite nonnegative spend",
+      "passed": true
+    },
+    {
+      "name": "unique TV week starts",
+      "passed": true
+    },
+    {
+      "name": "parseable canonical dates; Monday–Sunday seven-day periods",
+      "passed": true
+    },
+    {
+      "name": "weekly continuity without gaps or overlaps",
+      "passed": true
+    },
+    {
+      "name": "monthly grain and unique periods",
+      "passed": true
+    },
+    {
+      "name": "finite sales and nonnegative finite digital/email",
+      "passed": true
+    },
+    {
+      "name": "complete ordered warm-up and analysis months",
+      "passed": true
+    },
+    {
+      "name": "weekly coverage spans complete monthly window",
+      "passed": true
+    },
+    {
+      "name": "declared units match project contract",
+      "passed": true
+    },
+    {
+      "name": "full expanded calendar spend conservation",
+      "passed": true
+    },
+    {
+      "name": "one-to-one month join coverage",
+      "passed": true
+    }
+  ],
+  "inputDirectory": "data/raw",
+  "sourceSha256": "4b4645aa0f99910813c5155c85f07416c25456d2f88aa502ac992ee854816786",
+  "started": "2026-11-03T08:29:47.751Z",
+  "at": "2026-11-03T08:29:47.776Z",
+  "llm": {
+    "mode": "replay",
+    "route": "openai_responses_api",
+    "specSha256": "99128de5f2d87cee414f68c00d22d9fb66af50cecb112b41ffbc072641dcd342",
+    "providerModelIdentifier": "gpt-5.4-mini-2026-03-17",
+    "unresolvedCount": 4,
+    "checkedCount": 2
+  },
+  "decisionScope": "Synthetic pipeline gate passed. Unresolved vendor facts still require human confirmation before real-client use."
+}
